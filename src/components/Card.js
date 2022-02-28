@@ -1,8 +1,7 @@
 import React from "react";
 
-/**
- * React aweseome icon pin location instead of emoji
- */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 export default function Card(props) {
   let badgeText;
@@ -15,10 +14,15 @@ export default function Card(props) {
   return (
     <section className="card">
       {badgeText && <div className="card--badge">{badgeText}</div>}
-      <img src={`../images/${props.item.imageUrl}`} className="card--img" />
+      <img
+        src={process.env.PUBLIC_URL + `/images/${props.item.imageUrl}`}
+        className="card--img"
+      />
+      {/* <img src={process.env.PUBLIC_URL + "/images/airbnb_1.png"} className="nav-logo" */}
       <div className="card--text">
         <h4 className="card-location">
-          📍{props.item.location}
+          <FontAwesomeIcon icon={faLocationDot} className="pin-location" />{" "}
+          {props.item.location}
           <a href={props.item.googleMapsUrl} className="gray">
             View on Google Maps
           </a>
